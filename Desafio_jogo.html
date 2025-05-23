@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo C/ Objeto</title>
+</head>
+<body>
+    <script>
+        let nome = prompt("Digite o seu nome ")
+        let idade = prompt("Digite a sua idade ")
+        let tipo = prompt("Digite sua categoria de heroi (Guerreiro/ Mago/ Monge/ Ninja)")
+
+        class Heroi {
+            
+            constructor(nome, idade, tipo){
+                this.name = nome,
+                this.idade = idade,
+                this.tipo = tipo.toLowerCase() //maiusculo ----toUpperCase-> Minusculo
+            }
+
+            ataque() {
+                // Define ataque conforme tipo de heroi
+                switch(this.tipo) {
+                    case 'guerreiro':
+                        return 'espada';
+                    case 'mago':
+                        return 'magia';
+                    case 'monge':
+                        return 'artes marciais';
+                    case 'ninja':
+                        return 'shuriken';
+                    default:
+                        return 'ataque desconhecido';
+                }
+            }
+
+            caracteristicas(){
+                return `Nome: ${this.name}, Idade: ${this.idade}, Tipo: ${this.tipo}`
+            }
+        }
+        const heroi = new Heroi(nome, idade, tipo);
+
+        function atacar() {
+            const msg = document.createElement('h3');
+            msg.textContent = `O ${heroi.tipo} atacou usando ${heroi.ataque()}`;
+            document.body.appendChild(msg);
+        }
+        atacar();
+    </script>
+</body>
+</html>
